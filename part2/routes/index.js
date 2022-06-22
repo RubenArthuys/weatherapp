@@ -46,9 +46,8 @@ router.post('/add-city', function(req, res, next) {
 
 //Delete city
 router.get('/delete-city', function(req, res, next) {
-
   cityList.splice(req.query.position, 1)
-  
+
   res.render('weather', { title : 'Weather App', cityList });
 });
 
