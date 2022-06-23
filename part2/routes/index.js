@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var request = require('sync-request');
 
-
 var cityList = [
   {name: "Bordeaux", desc: "Soleil", img:"/images/picto-1.png", temp_min:2, temp_max: 19},
   {name: "Marseille", desc: "Couvert", img:"/images/picto-1.png", temp_min:6, temp_max: 12},
