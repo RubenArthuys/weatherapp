@@ -7,7 +7,7 @@ var request = require('sync-request');
 
 // Login
 router.get('/', function(req, res) {
-  res.render('login', {  });
+  res.render('login');
 });
 
 //Weather
@@ -18,12 +18,13 @@ router.get('/weather', async function(req, res) {
 
 //Add city
 router.post('/add-city', async function(req, res) {
+
   var requete = request("GET", "https://api.openweathermap.org/data/2.5/weather?q="+ req.body.newcity +"&appid=ed655ad17c7705dd1baeae5f415d561f&units=metric");
   var dataAPI = JSON.parse(requete.body);
 
   if (dataAPI.name) {
-    dataAPI.name = dataAPI.name.charAt(0).toUpperCase() + dataAPI.name.substr(1).toLowerCase()
-    req.body.newcity = req.body.newcity.charAt(0).toUpperCase() + req.body.newcity.substr(1).toLowerCase()
+    dataAPI.name = dataAPI.name.charAt([0]).toUpperCase() + dataAPI.name.substr([1]).toLowerCase()
+    req.body.newcity = req.body.newcity.charAt([0]).toUpperCase() + req.body.newcity.substr([1]).toLowerCase()
   }
 
   var cityExist = await cityModel.findOne({ name : req.body.newcity }) 
@@ -110,7 +111,7 @@ router.post('/sign-in', async function(req, res) {
   });
   // console.log(userSignedIn);
 
-  if(userSignedIn != null) {
+  if(userSignedIn) {
     req.session.user = {
       name : userSignedIn.email,
       id : userSignedIn._id
